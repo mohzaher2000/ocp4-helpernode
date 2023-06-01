@@ -37,7 +37,10 @@ $TTL 1W
 {% endfor %}
 ;
 {% endif %}
-{{ helper.ipaddr.split('.')[3] }}	IN	PTR	api.{{ dns.clusterid }}.{{ dns.domain | lower }}.
-{{ helper.ipaddr.split('.')[3] }}	IN	PTR	api-int.{{ dns.clusterid }}.{{ dns.domain | lower }}.
+;
+{% if dns.lb_ipaddr is defined}
+{{ dns.lb_ipaddr }}	IN	PTR	api.{{ dns.clusterid }}.{{ dns.domain | lower }}.
+{{ dns.lb_ipaddr }}	IN	PTR	api-int.{{ dns.clusterid }}.{{ dns.domain | lower }}.
+{% endif %}
 ;
 ;EOF

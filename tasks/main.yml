@@ -5,6 +5,7 @@
   vars_files:
     - ../vars/main.yml
     - ../vars/ports.yml
+    - ../docs/examples/vars-ipi.yaml
   handlers:
   - import_tasks: ../handlers/main.yml
 
@@ -112,6 +113,7 @@
     when: dhcp.dns is not defined or dhcp.dns == helper.ipaddr 
 
   - name: Set HTTP server and prepare OCP4 bios
+    
     block:
     - name: Copy httpd conf file
       copy:
@@ -570,7 +572,7 @@
         - /usr/local/src/helm
 
     - name: Downloading helm source binary tarball
-      get_url:
+      get_url:lb_ipaddr
         url: "{{ helm_source }}"
         dest: /usr/local/src/helm/helm-client.tar.gz
 

@@ -1,0 +1,36 @@
+apiVersion: v1
+baseDomain: {{ dns.domain }}
+compute:
+- hyperthreading: Enabled
+  name: worker
+  replicas: 3
+controlPlane:
+  hyperthreading: Enabled
+  name: master
+  replicas: 3
+metadata:
+  name: {{ dns.clusterid}}
+networking:
+  clusterNetworks:
+  - cidr: 10.254.0.0/16
+    hostPrefix: 24
+  networkType: OpenShiftSDN
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  vsphere:
+    vcenter: {{ vcenter.server }}
+    username: {{ vcenter.username }}
+    password: {{ vcenter.password }}
+    datacenter: {{ vcenter.datacenter }}
+    defaultDatastore: {{ vcenter.datastore }}
+    folder: {{ vcenter.folder }}
+    diskType:{{ vcenter.disk_type }}
+    network: {{ vcenter.vm_network }}
+    cluster: {{ vsphere.cluster }}
+    apiVIPs:
+    - {{ dns.lb_ipaddr}}
+    ingressVIPs:
+    - {{ dns.app_ipaddr}}
+pullSecret: {{ pullsecret }}
+sshKey: 'ssh-ed25519 AAAA...'

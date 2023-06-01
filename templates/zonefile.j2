@@ -27,7 +27,7 @@ api		    IN	A	{{ dns.lb_ipaddr }}
 api-int		IN	A	{{ dns.lb_ipaddr }}
 ;
 ; The wildcard also points to the load balancer
-*.apps		IN	A	{{ dns.lb_ipaddr }}
+*.apps		IN	A	{{ dns.app_ipaddr }}
 {% else %}
 api			IN	A	{{ helper.ipaddr }}
 api-int		IN	A	{{ helper.ipaddr }}

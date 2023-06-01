@@ -1,0 +1,33 @@
+disk: vda
+helper:
+  name: "bastion"
+  ipaddr: "192.168.44.10"
+dns:
+  domain: "ggtjp.dynamic.opentlc.com"
+  clusterid: "cluster10001"
+  forwarder1: "10.2.192.12"
+  forwarder2: "8.8.4.4"
+  lb_ipaddr: "192.168.44.201"
+  app_ipaddr: "192.168.44.202"
+dhcp:
+  router: "192.168..1"
+  bcast: "192.168.44.255"
+  netmask: "255.255.255.0"
+  poolstart: "192.168.44.10"
+  poolend: "192.168.44.30"
+  ipid: "192.168.44.0"
+  netmaskid: "255.255.255.0"
+vsphere:
+  server:  "portal.vc.opentlc.com"
+  username: "sandbox-ggtjp@vc.opentlc.com"
+  password: "eQy_LQzWZp68"
+  datastore: "WorkloadDatastore"
+  folder: "SDDC-Datacenter"
+  disk_type: "thin"
+  vm_network: "segment-sandbox-ggtjp"
+  cluster: "Cluster-1"
+pullsecret: "{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K21vaHphaGVyMWVyZW9rdWs4cnk0anNkdDZtMXZlbmUyeWdpOklJNkQzT1IxRExaVEwwVDU0QUM1UlVaOEYzQUs1UERETVFTUzhFM080UTVBVDk3TDJEQVg5SThBTVlTNkIyMks=","email":"mzaher@redhat.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K21vaHphaGVyMWVyZW9rdWs4cnk0anNkdDZtMXZlbmUyeWdpOklJNkQzT1IxRExaVEwwVDU0QUM1UlVaOEYzQUs1UERETVFTUzhFM080UTVBVDk3TDJEQVg5SThBTVlTNkIyMks=","email":"mzaher@redhat.com"},"registry.connect.redhat.com":{"auth":"NTI2NDQyMjV8dWhjLTFlUmVva1VLOHJZNEpTZHQ2TTFWRU5lMllHaTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmpZMkptWVRjM01URm1NREUwTXpBNFlXUTVZalExTldGbE5tTXhNV0kyTkNKOS5WQzNWSXJTZDE1YTc3cUdTOEJSYjVnWE9JUGlYNDlidmpSaUhwWGVTdW85a2xoWXNVeDFyUlE4dkpsQTJCdUQ1SmcyZzBac2VNVEtXdGppZkwxNEwxcDRZWXVGckZ3bjRxdmo5VXhJNU1vMDdTSjU1YlpNcVF3NTlSajBIeTRzNjlPS2J5bkpGVFdlbVVnYU1nVjJwRXhtMmZqNXBnc2Z2WnlBclJLWThzSl9nS0h2ME80TXJ0T3JKdXFGWTEwOFA5SUpBTE9lTHVpZ3hHcmk2NEwzRHlRQXFvNmExY3JINW1tSkNSOVZEdHB5SDM3d3NoMG1KeUdxTThteF9aNDdHLWhpYTBJSTRReFJLa2Q2bzU5VWs2X2YzdkFFNHMzZEh0WWZSREkwMTl4RjFRQjNLZTg0NlpkcGxUSU9kX2VaQmxlblBWOG1GLUNqaF9QaWx5N2hWVXNUOFlnMVNVbEhlYWhtVkNFenZ1OGJrTTFOeFVCOUxkam15WElmMjRfSjV0ODV0ZFNwcy1fZzlBUzU4eEhsRmhWTlZoalVtX19BUjRTOHVobG5JMDVxZ3dnMklFbkZqSHlQN2pqd25PMHZjODhSVktPNFJwZ3VnR3VCZVFtbVhEaDhkcFRUbU0tdy1JVG1fZGotcTBhcXFUSDRHTEcxQ3VKLWpRUVhpbkFtSENacW9DdjhmMGs4RDFOa2ZhaFpndHc0dVUwcU50cm94ZFo0WE9YWlZpdFRScXZVYjdKX1pJVDBncGZhaTZxYWZadlpPWk83MGtaalAwcWk3SEFGSzl1dHc0a3RKNVNwb1hqMjdyaXdSV1NFVnA4eV8waGo2ZXhEdHgwWDc2U0lPc1pKQVhEYlJRUWlEWHVCTndBenU2SXA0WWVnV2htSElLaWItY2tRR0hpSQ==","email":"mzaher@redhat.com"},"registry.redhat.io":{"auth":"NTI2NDQyMjV8dWhjLTFlUmVva1VLOHJZNEpTZHQ2TTFWRU5lMllHaTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmpZMkptWVRjM01URm1NREUwTXpBNFlXUTVZalExTldGbE5tTXhNV0kyTkNKOS5WQzNWSXJTZDE1YTc3cUdTOEJSYjVnWE9JUGlYNDlidmpSaUhwWGVTdW85a2xoWXNVeDFyUlE4dkpsQTJCdUQ1SmcyZzBac2VNVEtXdGppZkwxNEwxcDRZWXVGckZ3bjRxdmo5VXhJNU1vMDdTSjU1YlpNcVF3NTlSajBIeTRzNjlPS2J5bkpGVFdlbVVnYU1nVjJwRXhtMmZqNXBnc2Z2WnlBclJLWThzSl9nS0h2ME80TXJ0T3JKdXFGWTEwOFA5SUpBTE9lTHVpZ3hHcmk2NEwzRHlRQXFvNmExY3JINW1tSkNSOVZEdHB5SDM3d3NoMG1KeUdxTThteF9aNDdHLWhpYTBJSTRReFJLa2Q2bzU5VWs2X2YzdkFFNHMzZEh0WWZSREkwMTl4RjFRQjNLZTg0NlpkcGxUSU9kX2VaQmxlblBWOG1GLUNqaF9QaWx5N2hWVXNUOFlnMVNVbEhlYWhtVkNFenZ1OGJrTTFOeFVCOUxkam15WElmMjRfSjV0ODV0ZFNwcy1fZzlBUzU4eEhsRmhWTlZoalVtX19BUjRTOHVobG5JMDVxZ3dnMklFbkZqSHlQN2pqd25PMHZjODhSVktPNFJwZ3VnR3VCZVFtbVhEaDhkcFRUbU0tdy1JVG1fZGotcTBhcXFUSDRHTEcxQ3VKLWpRUVhpbkFtSENacW9DdjhmMGs4RDFOa2ZhaFpndHc0dVUwcU50cm94ZFo0WE9YWlZpdFRScXZVYjdKX1pJVDBncGZhaTZxYWZadlpPWk83MGtaalAwcWk3SEFGSzl1dHc0a3RKNVNwb1hqMjdyaXdSV1NFVnA4eV8waGo2ZXhEdHgwWDc2U0lPc1pKQVhEYlJRUWlEWHVCTndBenU2SXA0WWVnV2htSElLaWItY2tRR0hpSQ==","email":"mzaher@redhat.com"}}}"
+
+
+
+  

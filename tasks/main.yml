@@ -658,6 +658,16 @@
       name: haproxy
       state: stopped
     when: (dhcp.dns is defined and dhcp.dns != helper.ipaddr) or (dns.lb_ipaddr is defined and dns.lb_ipaddr != helper.ipaddr)
+  
+  - name: Create the install directory
+    file:
+      path: "~/{{ dns.clusterid }}-install"
+      state: directory
+  
+  - name: Copy the install config file
+    template:
+      src: ../templates/insrall-config.j2
+      dest: ~/{{ dns.clusterid }}-install/install-config.j2
 
   - name:  Information about this install
     debug:

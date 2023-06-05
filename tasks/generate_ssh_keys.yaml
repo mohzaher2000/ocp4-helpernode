@@ -10,6 +10,13 @@
    comment: "{{ ansible_env.USER }}@helper"
    state: present
 
+- name: Store the ssh public key to a fact
+  shell: cat {{ ansible_env.HOME }}/.ssh/helper_rsa.pub
+  register: public_key
+
+- set_fact:
+    sshkey: public_key.stdout
+
 - blockinfile:
     path: "{{ ansible_env.HOME }}/.ssh/config"
     state: present

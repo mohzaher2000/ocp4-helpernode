@@ -10,7 +10,7 @@ dns:
   lb_ipaddr: "192.168.44.201"
   app_ipaddr: "192.168.44.202"
 dhcp:
-  router: "192.168..1"
+  router: "192.168.44.1"
   bcast: "192.168.44.255"
   netmask: "255.255.255.0"
   poolstart: "192.168.44.10"

@@ -10,6 +10,7 @@ ocp_initramfs: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos
 ocp_install_kernel: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.9/4.9.0/rhcos-4.9.0-x86_64-live-kernel-x86_64"
 ocp_client: "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz"
 ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz"
+vcenter_url: "https://portal.vc.opentlc.com"
 helm_source: "https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz"
 download_imgs: true
 chars: (\\_|\\$|\\\|\\/|\\=|\\)|\\(|\\&|\\^|\\%|\\$|\\#|\\@|\\!|\\*)

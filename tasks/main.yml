@@ -253,6 +253,22 @@
       path: /usr/local/bin/README.md
       state: absent
 
+  - name: Downloading vCenter certificates
+    get_url:
+      url: "{{ vcenter_url }}/certs/download.zip"
+      dest: /tmp/download.zip
+
+  - name: Unarchiving vCenter certificates
+    unarchive:
+      src: /tmp/download.zip
+      dest: /tmp/
+      remote_src: yes
+
+  - name: Copy the certificates to the trust store 
+    copy:
+      src: /tmp/certs/lin/
+      dest: /etc/pki/ca-trust/source/anchors
+    
 
   - name: Set the local resolv.conf file
     template:

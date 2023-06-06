@@ -572,7 +572,7 @@
         - /usr/local/src/helm
 
     - name: Downloading helm source binary tarball
-      get_url:lb_ipaddr
+      get_url:
         url: "{{ helm_source }}"
         dest: /usr/local/src/helm/helm-client.tar.gz
 

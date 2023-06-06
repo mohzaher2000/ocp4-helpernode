@@ -63,7 +63,7 @@
       dest: /etc/dhcp/dhcpd.conf
     notify:
       - restart dhcpd
-    when: not uefi
+    when: uefi
 
   - name: Setup named configuration files
     block:

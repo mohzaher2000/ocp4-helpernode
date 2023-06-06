@@ -5,12 +5,3 @@
   with_items:
   - "{{ dns.domain }}"
   - "{{ helper.name }}"
-
-- name: Validate values for DNS compatibility 2
-  fail:
-    msg: "Please revise your vars.yaml file. Invalid characters found in hostnames"
-  when: item is search('{{ chars }}') and not ipi
-  with_items:
-  - "{{ bootstrap.name | default('') }}"
-  - "{{ masters }}"
-  - "{{ workers | default('') }}"

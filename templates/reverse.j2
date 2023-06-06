@@ -38,7 +38,7 @@ $TTL 1W
 ;
 {% endif %}
 ;
-{% if dns.lb_ipaddr is defined}
+{% if dns.lb_ipaddr is defined%}
 {{ dns.lb_ipaddr }}	IN	PTR	api.{{ dns.clusterid }}.{{ dns.domain | lower }}.
 {{ dns.lb_ipaddr }}	IN	PTR	api-int.{{ dns.clusterid }}.{{ dns.domain | lower }}.
 {% endif %}

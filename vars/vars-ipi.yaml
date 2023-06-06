@@ -23,7 +23,7 @@ vcenter:
   password: "loZ9VrQmbhv8"
   datastore: "WorkloadDatastore"
   datacenter: "SDDC-Datacenter"
-  folder: "sandbox-qlrdvr"
+  folder: "sandbox-qlrdv"
   disk_type: "thin"
   vm_network: "segment-sandbox-qlrdv"
   cluster: "Cluster-1"

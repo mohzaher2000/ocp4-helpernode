@@ -15,4 +15,4 @@
   register: public_key
 
 - set_fact:
-    sshkey: public_key.stdout
+    sshkey: "{{ public_key.stdout }}"vimi 

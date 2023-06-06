@@ -25,12 +25,12 @@ platform:
     datacenter: {{ vcenter.datacenter }}
     defaultDatastore: {{ vcenter.datastore }}
     folder: {{ vcenter.folder }}
-    diskType:{{ vcenter.disk_type }}
+    diskType: {{ vcenter.disk_type }}
     network: {{ vcenter.vm_network }}
     cluster: {{ vcenter.cluster }}
     apiVIPs:
     - {{ dns.lb_ipaddr}}
     ingressVIPs:
     - {{ dns.app_ipaddr}}
-pullSecret: {{ pullsecret }}
-sshKey: '{{ sshkey }}
+pullSecret: '{{ pullsecret }}'
+sshKey: '{{ sshkey }}'

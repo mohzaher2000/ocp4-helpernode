@@ -17,12 +17,13 @@ dhcp:
   poolend: "192.168.25.30"
   ipid: "192.168.25.0"
   netmaskid: "255.255.255.0"
-vsphere:
+vcenter:
   server:  "portal.vc.opentlc.com"
   username: "sandbox-qlrdv@vc.opentlc.com"
   password: "loZ9VrQmbhv8"
   datastore: "WorkloadDatastore"
-  folder: "SDDC-Datacenter"
+  datacenter: "SDDC-Datacenter"
+  folder: "sandbox-qlrdvr"
   disk_type: "thin"
   vm_network: "segment-sandbox-qlrdv"
   cluster: "Cluster-1"

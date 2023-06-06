@@ -295,13 +295,13 @@
 
   - name: Create the install directory
     file:
-      path: "~/{{ dns.clusterid }}-install"
+      path: "{{ home }}/{{ dns.clusterid }}-install"
       state: directory
   
   - name: Copy the install config file
     template:
-      src: ../templates/insrall-config.j2
-      dest: ~/{{ dns.clusterid }}-install/install-config.j2
+      src: ../templates/intall-config.j2
+      dest: "{{ home }}/{{ dns.clusterid }}-install/install-config.yaml"
 
   - name:  Information about this install
     debug:

@@ -327,8 +327,4 @@
       src: ../templates/intall-config.j2
       dest: "{{ ansible_env.HOME }}/{{ dns.clusterid }}-install/install-config.yaml"
 
-  - name:  Information about this install
-    debug:
-      msg:
-        - "Please run /usr/local/bin/helpernodecheck for information"
 

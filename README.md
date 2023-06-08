@@ -1,30 +1,29 @@
 # OCP4 Helper Node
 
-> :heavy_exclamation_mark: *Red Hat support cannot assist with problems with this Repo*. For issues please open a GitHub issue
+The main target of this playbook is to prepare the helper node to install OCP4 using Installer Provisioned Installation (IPI). This is achieved by doining the folloing, respectively:
 
-This playbook helps set up an "all-in-one" node, that has all the infrastructure/services in order to install OpenShift 4. After you run the playbook, you'll be ready to begin the installation process.
+1. Generate the SSH keys
+2. Install the necessary packages
+3. Configure DHCP
+4. Configure DNS (forward zones, backword zones)
+5. Configure the firewall
+6. Install the Openshift CLI **(oc)** client
+7. Install the Openshift Installer **(openshift-install)**
+8. Download the vCenter certificates and install them in the trust store
+9. Create and installation directory
+10. Create the **install-config**
 
-A lot of OpenShift 4 specific jargon is used throughout this doc, so please visit the [official documentation page](https://docs.openshift.com/container-platform/latest) to get familiar with OpenShift 4.
+Optionally, it also creates:
+1. HA Proxy for future use, i frequired
+2. NFS configuration for NFS persistent volume for the registry
+3. Registry resources
 
-> :warning: This playbook originally was written with BareMetal UPI install in mind
 
-This playbook assumes the following:
-
-1. You're on a Network that has access to the internet.
-2. The network you're on does NOT have DHCP (you can disable installing DHCP on the helper).
-3. The ocp4-helpernode will be your LB/DHCP/PXE/DNS and HTTP server.
-4. You still have to do the OpenShift Install steps by hand.
-5. I used CentOS 7/8, but RHEL 7/8 will work as well.
-6. You will be running the `openshift-install` command from the ocp4-helpernode.
 
 Below is a highlevel diagram how the ocp4-helpernode fits into your network.
 
 ![ocp4-helpernode](docs/images/hn.png)
 
-
-It's important to note that you can delegate DNS to this ocp4-helpernode if you don't want to use it as your main DNS server. You will have to delegate `$CLUSTERID.$DOMAIN` to this helper node.
-
-For example; if you want a `$CLUSTERID` of **ocp4**, and you have a `$DOMAIN` of **example.com**. Then you will delegate `ocp4.example.com` to this ocp4-helpernode.
 
 # Using this playbook
 
@@ -32,39 +31,36 @@ The following are highlevel steps on how to use this playbook. There are more de
 
 ## Prereqs
 
-> :warning: **NOTE** If using RHEL 7, you will need to enable the `rhel-7-server-rpms` and the `rhel-7-server-extras-rpms` repos. If you're using RHEL 8, you will need to enable `rhel-8-for-x86_64-baseos-rpms`, `rhel-8-for-x86_64-appstream-rpms`, and `ansible-2.9-for-rhel-8-x86_64-rpms`.
-
-
-Install a CentOS 7 or CentOS 8 server with this recommended setup:
+Install a RHEL server with this recommended setup:
 
 * 4 vCPUs
 * 4 GB of RAM
 * 30GB HD
 * Static IP
 
-There is a sample kickstart file for [EL 7](docs/examples/helper-ks.cfg) and [EL 8](docs/examples/helper-ks8.cfg) that is used during testing, if you'd like to automate the initial install of the OS.
 
-Once the base OS is installed, install [EPEL](https://fedoraproject.org/wiki/EPEL)
-
-```
-yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
-```
-
-Next install `ansible` and `git`, then clone this repo.
+Once the base OS is installed, install `ansible` and `git`, then clone this repo and check out to your branch `KIO-networks`.
 
 ```
 yum -y install ansible git
-git clone https://github.com/redhat-cop/ocp4-helpernode
+git clone https://github.com/mohzaher2000/ocp4-helpernode.git
+git checkout KIO-networks
+cd ocp4-helpernode
+```
+Alternatively you can install [EPEL](https://fedoraproject.org/wiki/EPEL) if you don't want to connect to the Red Hat Subscription Manager, for now. Next install `ansible` and `git`, then clone this repo.
+
+
+```
+yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
+yum -y install ansible git
+git clone https://github.com/mohzaher2000/ocp4-helpernode.git
+git checkout KIO-networks
 cd ocp4-helpernode
 ```
 
 ## Setup your Environment Vars
 
-Inside that dir there is a [vars.yaml](docs/examples/vars.yaml) file under `docs/examples/var.yaml` ... **__modify it__** to match your network and the environment. (the example one assumes a `/24`)
-
-```
-cp docs/examples/vars.yaml .
-```
+In the project there is a [vars-ipi.yaml](docs/examples/vars-ipi.yaml) file under `docs/examples/var.yaml` ... **__modify it__** to match your network and the environment. 
 
 > :warning: **NOTE**, currently this playbook assumes/is limited to a `/24` network
 
